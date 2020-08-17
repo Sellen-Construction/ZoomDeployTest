@@ -1,5 +1,6 @@
 ﻿<payload name='Zoom 5.2.44052'>
     <message>This is a message from Sellen Technology. A new version of Zoom Meetings is available. If you are not currently using Zoom, please click Install to begin the upgrade. Upgrading takes less than a minute to complete.</message>
-    <step name='Kill Zoom' type='CMD' file='taskkill' params='/F /IM Zoom.exe' />
-    <step name='Install Zoom' type='MSI' file='ZoomInstallerFull.msi' params='/qn /norestart ZSILENTSTART="true" ZNoDesktopShortCut="true" ZSSOHOST="sellen" ZConfig="nogoogle=1;nofacebook=1;AddFWException=1;DisableLoginWithEmail=1"' />
+    <step name='Kill Zoom' type='CMD' asAdmin='false' file='taskkill' params='/F /IM Zoom.exe' />
+    <step name='Sleep 5 seconds' type='CMD' asAdmin='false' file='ping' params='127.0.0.1 -n 5 > nul' />
+    <step name='Install Zoom' type='MSI' asAdmin='true' file='ZoomInstallerFull.msi' params='/qn /norestart ZSILENTSTART="true" ZNoDesktopShortCut="true" ZSSOHOST="sellen" ZConfig="nogoogle=1;nofacebook=1;AddFWException=1;DisableLoginWithEmail=1"' />
 </payload>
